@@ -36,10 +36,18 @@
       <td>
         JSON object holding data about all movies. Structure:
         <p>
-          { Title: "The Godfather", Description: "Crime, Mafia movie...",
-          Genre: {Name: "Crime", Description: "Movie involving criminal activity"},
-          Director: {Name: "Francis Ford Coppola",
-          ImagePath: "casablanca.png", Featured: false}
+          { Title: "The Godfather",
+          <br>Description: "Crime, Mafia movie...",
+          <br>Genre: {
+            <br>Name: "Crime",
+            <br>Description: "Movie involving criminal activity"},
+          <br>Director: {
+            <br>Name: "Francis Ford Coppola",
+            <br>Bio: "Francis Coppola in an Amrican director..."
+            <br>Birthdate: "1954-03-6"
+          <br>ImagePath: "casablanca.png",
+          <br>Featured: false
+          <br>}
         </p>
       </td>
     </tr>
@@ -61,21 +69,25 @@
         JSON object holding data about a movie genre, containing name and
         description. Structure:
         <p>
-          {Name: "Action", Description: "Movie is fast paced usually violent,
-          etc."}
+          {Name: "Action",
+          <br>Description: "Movie is fast paced usually violent,
+          etc."
+          <br>}
         </p>
       </td>
     </tr>
     <tr>
       <td>Get data about a director</td>
-      <td>/director/[name]</td>
+      <td>movies/directors/[name]</td>
       <td>GET</td>
       <td>None</td>
       <td>
         JSON object holding data about a director. Structure:
         <p>
-          {Name: "Francis Ford Coppola", Bio: "American Director,
-          etc.", birthday: "04-07-1939", Death: ""}
+          {Name: "Francis Ford Coppola",
+          <br>Bio: "American Director,etc.",
+          <br> birthday: "04-07-1939",
+          <br>Death: ""}
         </p>
       </td>
     </tr>
@@ -86,15 +98,20 @@
       <td>
         JSON object holding data about the user to add. Structure:
         <p>
-          { username: "Jake", password: "aka3", email:
-          "jake.wake@gmail.com", dateofbirth: "12-12-2001"
+          { username: "Jake",
+          <br>password: "aka3",
+          <br>email:"jake.wake@gmail.com",
+          <br>dateofbirth: "12-12-2001"
         </p>
       </td>
       <td>
-        JSON object holding data about the user that was add. Structure:
+        JSON object holding data about the user that was added. Structure:
         <p>
-          { id: 7, username: "Jake", password: "aka3", email:
-          "jake.wake@gmail.com", dateofbirth: "12-12-2001"
+          { id: 7,
+            <br>Username: "Jake",
+            <br>Password: "aka3",
+            <br>email:"jake.wake@gmail.com",
+            <br>dateofbirth: "12-12-2001"
         </p>
       </td>
     </tr>
@@ -105,11 +122,13 @@
       <td>
         JSON object holding data about the user to add. Structure:
         <p>
-          { username: "Jake", password: "aka3", email:
-          "jake.wake@gmail.com", dateofbirth: "12-12-2001"
+        Username: "Jake",
+          <br>Password: "aka3",
+          <br>email:"jake.wake@gmail.com",
+          <br>dateofbirth: "12-12-2001"
         </p>
       </td>
-      <td>A message indicating the user's information was updated.</td>
+      <td>A message indicating the user's information was updated and a JSON object with all the users new info</td>
     </tr>
     <tr>
       <td>Add a movie to the user's favorites list</td>
@@ -118,7 +137,7 @@
       <td>None</td>
       <td>
         A message indicating the movie title was added to the user's
-        favorites list.
+        favorites list including JSON object with all the user info including the new movie that was added.
       </td>
     </tr>
     <tr>
@@ -128,7 +147,7 @@
       <td>None</td>
       <td>
         A message indicating the movie title was deleted from the user's
-        favorites list.
+        favorites list with JSON object with all user info minus the favorite movie that was removed
       </td>
     </tr>
     <tr>
