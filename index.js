@@ -120,7 +120,7 @@ app.post('/users',
           .create({
             Username: req.body.Username,
             Password: hashedPassword,
-            email: req.body.email,
+            Email: req.body.Email,
             Birthday: req.body.Birthday
           })
           .then((user) =>{res.status(201).json(user) })
@@ -153,7 +153,7 @@ app.put('/users/:Username',
     {
       Username: req.body.Username,
       Password: req.body.Password,
-      email: req.body.email,
+      Email: req.body.Email,
       Birthday: req.body.Birthday
     }
   },
