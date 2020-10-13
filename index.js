@@ -110,7 +110,7 @@ app.post('/users',
   if (!errors.isEmpty()) {
     return res.status(422).json({ errors: errors.array() });
   }
-  let hashedPassword = Users.hasPassword(req.body.Password);
+  let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username: req.body.Username })
     .then((user) => {
       if (user) {
@@ -148,7 +148,7 @@ app.put('/users/:Username',
    if (!errors.isEmpty()) {
      return res.status(422).json({ errors: errors.array() });
    }
-   let hashedPassword = Users.hasPassword(req.body.Password);
+   let hashedPassword = Users.hashPassword(req.body.Password);
   Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
       Username: req.body.Username,
