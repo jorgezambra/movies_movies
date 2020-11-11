@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from 'react-bootstrap/Button'
+import Container from 'react-bootstrap/Container';
 
 export class MovieView extends React.Component {
 
@@ -14,29 +16,34 @@ export class MovieView extends React.Component {
     if (!movie) return null;
 
     return (
-      <div className="movie-view">
-        <img className="movie-poster" src={movie.ImagePath} />
-        <div className="movie-title">
-          <span className="label">Title: </span>
-          <span className="value">{movie.Title}</span>
+      <Container>
+        <br></br>
+        <div className="movie-view" style={{ width: "660px" }}>
+          <img className="movie-poster" src={movie.ImagePath} />
+          <div className="movie-title">
+            <br></br>
+            <span className="label">Title: </span>
+            <span className="value">{movie.Title}</span>
+          </div>
+          <br></br>
+          <div className="movie-description">
+            <span className="label">Description: </span>
+            <span className="value">{movie.Description}</span>
+          </div>
+          <br></br>
+          <div className="movie-genre">
+            <span className="label">Genre: </span>
+            <span className="value">{movie.Genre.Name}</span>
+          </div>
+          <br></br>
+          <div className="movie-director">
+            <span className="label">Director: </span>
+            <span className="value">{movie.Director.Name}</span>
+          </div>
+          <br></br>
+          <Button variant="dark" onClick={backToMovies}>Back</Button>
         </div>
-        <div className="movie-description">
-          <span className="label">Description: </span>
-          <span className="value">{movie.Description}</span>
-        </div>
-
-        <div className="movie-genre">
-          <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
-        </div>
-        <div className="movie-director">
-          <span className="label">Director: </span>
-          <span className="value">{movie.Director.Name}</span>
-        </div>
-        <button onClick={backToMovies}>Back</button>
-      </div>
-
-
+      </Container>
     );
   }
 }
