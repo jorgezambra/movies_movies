@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
 export class MovieView extends React.Component {
