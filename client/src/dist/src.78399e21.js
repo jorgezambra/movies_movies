@@ -30075,7 +30075,419 @@ module.exports.default = axios;
 
 },{"./utils":"../node_modules/axios/lib/utils.js","./helpers/bind":"../node_modules/axios/lib/helpers/bind.js","./core/Axios":"../node_modules/axios/lib/core/Axios.js","./core/mergeConfig":"../node_modules/axios/lib/core/mergeConfig.js","./defaults":"../node_modules/axios/lib/defaults.js","./cancel/Cancel":"../node_modules/axios/lib/cancel/Cancel.js","./cancel/CancelToken":"../node_modules/axios/lib/cancel/CancelToken.js","./cancel/isCancel":"../node_modules/axios/lib/cancel/isCancel.js","./helpers/spread":"../node_modules/axios/lib/helpers/spread.js"}],"../node_modules/axios/index.js":[function(require,module,exports) {
 module.exports = require('./lib/axios');
-},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
+},{"./lib/axios":"../node_modules/axios/lib/axios.js"}],"../../node_modules/react-router-dom/esm/react-router-dom.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "MemoryRouter", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.MemoryRouter;
+  }
+});
+Object.defineProperty(exports, "Prompt", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.Prompt;
+  }
+});
+Object.defineProperty(exports, "Redirect", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.Redirect;
+  }
+});
+Object.defineProperty(exports, "Route", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.Route;
+  }
+});
+Object.defineProperty(exports, "Router", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.Router;
+  }
+});
+Object.defineProperty(exports, "StaticRouter", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.StaticRouter;
+  }
+});
+Object.defineProperty(exports, "Switch", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.Switch;
+  }
+});
+Object.defineProperty(exports, "generatePath", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.generatePath;
+  }
+});
+Object.defineProperty(exports, "matchPath", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.matchPath;
+  }
+});
+Object.defineProperty(exports, "useHistory", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.useHistory;
+  }
+});
+Object.defineProperty(exports, "useLocation", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.useLocation;
+  }
+});
+Object.defineProperty(exports, "useParams", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.useParams;
+  }
+});
+Object.defineProperty(exports, "useRouteMatch", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.useRouteMatch;
+  }
+});
+Object.defineProperty(exports, "withRouter", {
+  enumerable: true,
+  get: function () {
+    return _reactRouter.withRouter;
+  }
+});
+exports.NavLink = exports.Link = exports.HashRouter = exports.BrowserRouter = void 0;
+
+var _reactRouter = require("react-router");
+
+var _inheritsLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inheritsLoose"));
+
+var _react = _interopRequireDefault(require("react"));
+
+var _history = require("history");
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
+
+var _tinyWarning = _interopRequireDefault(require("tiny-warning"));
+
+var _extends2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/extends"));
+
+var _objectWithoutPropertiesLoose2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/objectWithoutPropertiesLoose"));
+
+var _tinyInvariant = _interopRequireDefault(require("tiny-invariant"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+/**
+ * The public API for a <Router> that uses HTML5 history.
+ */
+var BrowserRouter = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(BrowserRouter, _React$Component);
+
+  function BrowserRouter() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.history = (0, _history.createBrowserHistory)(_this.props);
+    return _this;
+  }
+
+  var _proto = BrowserRouter.prototype;
+
+  _proto.render = function render() {
+    return _react.default.createElement(_reactRouter.Router, {
+      history: this.history,
+      children: this.props.children
+    });
+  };
+
+  return BrowserRouter;
+}(_react.default.Component);
+
+exports.BrowserRouter = BrowserRouter;
+
+if ("development" !== "production") {
+  BrowserRouter.propTypes = {
+    basename: _propTypes.default.string,
+    children: _propTypes.default.node,
+    forceRefresh: _propTypes.default.bool,
+    getUserConfirmation: _propTypes.default.func,
+    keyLength: _propTypes.default.number
+  };
+
+  BrowserRouter.prototype.componentDidMount = function () {
+    "development" !== "production" ? (0, _tinyWarning.default)(!this.props.history, "<BrowserRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { BrowserRouter as Router }`.") : void 0;
+  };
+}
+/**
+ * The public API for a <Router> that uses window.location.hash.
+ */
+
+
+var HashRouter = /*#__PURE__*/function (_React$Component) {
+  (0, _inheritsLoose2.default)(HashRouter, _React$Component);
+
+  function HashRouter() {
+    var _this;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _React$Component.call.apply(_React$Component, [this].concat(args)) || this;
+    _this.history = (0, _history.createHashHistory)(_this.props);
+    return _this;
+  }
+
+  var _proto = HashRouter.prototype;
+
+  _proto.render = function render() {
+    return _react.default.createElement(_reactRouter.Router, {
+      history: this.history,
+      children: this.props.children
+    });
+  };
+
+  return HashRouter;
+}(_react.default.Component);
+
+exports.HashRouter = HashRouter;
+
+if ("development" !== "production") {
+  HashRouter.propTypes = {
+    basename: _propTypes.default.string,
+    children: _propTypes.default.node,
+    getUserConfirmation: _propTypes.default.func,
+    hashType: _propTypes.default.oneOf(["hashbang", "noslash", "slash"])
+  };
+
+  HashRouter.prototype.componentDidMount = function () {
+    "development" !== "production" ? (0, _tinyWarning.default)(!this.props.history, "<HashRouter> ignores the history prop. To use a custom history, " + "use `import { Router }` instead of `import { HashRouter as Router }`.") : void 0;
+  };
+}
+
+var resolveToLocation = function resolveToLocation(to, currentLocation) {
+  return typeof to === "function" ? to(currentLocation) : to;
+};
+
+var normalizeToLocation = function normalizeToLocation(to, currentLocation) {
+  return typeof to === "string" ? (0, _history.createLocation)(to, null, null, currentLocation) : to;
+};
+
+var forwardRefShim = function forwardRefShim(C) {
+  return C;
+};
+
+var forwardRef = _react.default.forwardRef;
+
+if (typeof forwardRef === "undefined") {
+  forwardRef = forwardRefShim;
+}
+
+function isModifiedEvent(event) {
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+}
+
+var LinkAnchor = forwardRef(function (_ref, forwardedRef) {
+  var innerRef = _ref.innerRef,
+      navigate = _ref.navigate,
+      _onClick = _ref.onClick,
+      rest = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["innerRef", "navigate", "onClick"]);
+  var target = rest.target;
+  var props = (0, _extends2.default)({}, rest, {
+    onClick: function onClick(event) {
+      try {
+        if (_onClick) _onClick(event);
+      } catch (ex) {
+        event.preventDefault();
+        throw ex;
+      }
+
+      if (!event.defaultPrevented && // onClick prevented default
+      event.button === 0 && ( // ignore everything but left clicks
+      !target || target === "_self") && // let browser handle "target=_blank" etc.
+      !isModifiedEvent(event) // ignore clicks with modifier keys
+      ) {
+          event.preventDefault();
+          navigate();
+        }
+    }
+  }); // React 15 compat
+
+  if (forwardRefShim !== forwardRef) {
+    props.ref = forwardedRef || innerRef;
+  } else {
+    props.ref = innerRef;
+  }
+  /* eslint-disable-next-line jsx-a11y/anchor-has-content */
+
+
+  return _react.default.createElement("a", props);
+});
+
+if ("development" !== "production") {
+  LinkAnchor.displayName = "LinkAnchor";
+}
+/**
+ * The public API for rendering a history-aware <a>.
+ */
+
+
+var Link = forwardRef(function (_ref2, forwardedRef) {
+  var _ref2$component = _ref2.component,
+      component = _ref2$component === void 0 ? LinkAnchor : _ref2$component,
+      replace = _ref2.replace,
+      to = _ref2.to,
+      innerRef = _ref2.innerRef,
+      rest = (0, _objectWithoutPropertiesLoose2.default)(_ref2, ["component", "replace", "to", "innerRef"]);
+  return _react.default.createElement(_reactRouter.__RouterContext.Consumer, null, function (context) {
+    !context ? "development" !== "production" ? (0, _tinyInvariant.default)(false, "You should not use <Link> outside a <Router>") : (0, _tinyInvariant.default)(false) : void 0;
+    var history = context.history;
+    var location = normalizeToLocation(resolveToLocation(to, context.location), context.location);
+    var href = location ? history.createHref(location) : "";
+    var props = (0, _extends2.default)({}, rest, {
+      href: href,
+      navigate: function navigate() {
+        var location = resolveToLocation(to, context.location);
+        var method = replace ? history.replace : history.push;
+        method(location);
+      }
+    }); // React 15 compat
+
+    if (forwardRefShim !== forwardRef) {
+      props.ref = forwardedRef || innerRef;
+    } else {
+      props.innerRef = innerRef;
+    }
+
+    return _react.default.createElement(component, props);
+  });
+});
+exports.Link = Link;
+
+if ("development" !== "production") {
+  var toType = _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.object, _propTypes.default.func]);
+
+  var refType = _propTypes.default.oneOfType([_propTypes.default.string, _propTypes.default.func, _propTypes.default.shape({
+    current: _propTypes.default.any
+  })]);
+
+  Link.displayName = "Link";
+  Link.propTypes = {
+    innerRef: refType,
+    onClick: _propTypes.default.func,
+    replace: _propTypes.default.bool,
+    target: _propTypes.default.string,
+    to: toType.isRequired
+  };
+}
+
+var forwardRefShim$1 = function forwardRefShim(C) {
+  return C;
+};
+
+var forwardRef$1 = _react.default.forwardRef;
+
+if (typeof forwardRef$1 === "undefined") {
+  forwardRef$1 = forwardRefShim$1;
+}
+
+function joinClassnames() {
+  for (var _len = arguments.length, classnames = new Array(_len), _key = 0; _key < _len; _key++) {
+    classnames[_key] = arguments[_key];
+  }
+
+  return classnames.filter(function (i) {
+    return i;
+  }).join(" ");
+}
+/**
+ * A <Link> wrapper that knows if it's "active" or not.
+ */
+
+
+var NavLink = forwardRef$1(function (_ref, forwardedRef) {
+  var _ref$ariaCurrent = _ref["aria-current"],
+      ariaCurrent = _ref$ariaCurrent === void 0 ? "page" : _ref$ariaCurrent,
+      _ref$activeClassName = _ref.activeClassName,
+      activeClassName = _ref$activeClassName === void 0 ? "active" : _ref$activeClassName,
+      activeStyle = _ref.activeStyle,
+      classNameProp = _ref.className,
+      exact = _ref.exact,
+      isActiveProp = _ref.isActive,
+      locationProp = _ref.location,
+      sensitive = _ref.sensitive,
+      strict = _ref.strict,
+      styleProp = _ref.style,
+      to = _ref.to,
+      innerRef = _ref.innerRef,
+      rest = (0, _objectWithoutPropertiesLoose2.default)(_ref, ["aria-current", "activeClassName", "activeStyle", "className", "exact", "isActive", "location", "sensitive", "strict", "style", "to", "innerRef"]);
+  return _react.default.createElement(_reactRouter.__RouterContext.Consumer, null, function (context) {
+    !context ? "development" !== "production" ? (0, _tinyInvariant.default)(false, "You should not use <NavLink> outside a <Router>") : (0, _tinyInvariant.default)(false) : void 0;
+    var currentLocation = locationProp || context.location;
+    var toLocation = normalizeToLocation(resolveToLocation(to, currentLocation), currentLocation);
+    var path = toLocation.pathname; // Regex taken from: https://github.com/pillarjs/path-to-regexp/blob/master/index.js#L202
+
+    var escapedPath = path && path.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
+    var match = escapedPath ? (0, _reactRouter.matchPath)(currentLocation.pathname, {
+      path: escapedPath,
+      exact: exact,
+      sensitive: sensitive,
+      strict: strict
+    }) : null;
+    var isActive = !!(isActiveProp ? isActiveProp(match, currentLocation) : match);
+    var className = isActive ? joinClassnames(classNameProp, activeClassName) : classNameProp;
+    var style = isActive ? (0, _extends2.default)({}, styleProp, {}, activeStyle) : styleProp;
+    var props = (0, _extends2.default)({
+      "aria-current": isActive && ariaCurrent || null,
+      className: className,
+      style: style,
+      to: toLocation
+    }, rest); // React 15 compat
+
+    if (forwardRefShim$1 !== forwardRef$1) {
+      props.ref = forwardedRef || innerRef;
+    } else {
+      props.innerRef = innerRef;
+    }
+
+    return _react.default.createElement(Link, props);
+  });
+});
+exports.NavLink = NavLink;
+
+if ("development" !== "production") {
+  NavLink.displayName = "NavLink";
+
+  var ariaCurrentType = _propTypes.default.oneOf(["page", "step", "location", "date", "time", "true"]);
+
+  NavLink.propTypes = (0, _extends2.default)({}, Link.propTypes, {
+    "aria-current": ariaCurrentType,
+    activeClassName: _propTypes.default.string,
+    activeStyle: _propTypes.default.object,
+    className: _propTypes.default.string,
+    exact: _propTypes.default.bool,
+    isActive: _propTypes.default.func,
+    location: _propTypes.default.object,
+    sensitive: _propTypes.default.bool,
+    strict: _propTypes.default.bool,
+    style: _propTypes.default.object
+  });
+}
+},{}],"../node_modules/@babel/runtime/helpers/esm/extends.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33067,6 +33479,8 @@ var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -33105,9 +33519,7 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
   _createClass(MovieCard, [{
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          _onClick = _this$props.onClick;
+      var movie = this.props.movie;
       return _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_Card.default, {
         style: {
           width: '30%'
@@ -33115,28 +33527,29 @@ var MovieCard = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default.Img, {
         variant: "top",
         src: movie.ImagePath
-      })), _react.default.createElement("br", null), _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default.Text, null, movie.Description)), _react.default.createElement("br", null), _react.default.createElement(_Button.default, {
-        onClick: function onClick() {
-          return _onClick(movie);
-        },
+      })), _react.default.createElement("br", null), _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Col.default, null, _react.default.createElement(_Card.default.Text, null, movie.Description)), _react.default.createElement("br", null), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/movies/".concat(movie._id)
+      }, _react.default.createElement(_Button.default, {
         variant: "danger"
-      }, "MORE")))));
+      }, "MORE"))))));
     }
   }]);
 
   return MovieCard;
 }(_react.default.Component);
+/*MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
+};
+*/
+
 
 exports.MovieCard = MovieCard;
-MovieCard.propTypes = {
-  movie: _propTypes.default.shape({
-    Title: _propTypes.default.string.isRequired,
-    Description: _propTypes.default.string.isRequired,
-    ImagePath: _propTypes.default.string.isRequired
-  }).isRequired,
-  onClick: _propTypes.default.func.isRequired
-};
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movie-view/movie-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -33251,6 +33664,8 @@ var _react = _interopRequireDefault(require("react"));
 
 var _axios = _interopRequireDefault(require("axios"));
 
+var _reactRouterDom = require("react-router-dom");
+
 var _registrationView = require("../registration-view/registration-view");
 
 var _loginView = require("../login-view/login-view");
@@ -33296,7 +33711,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {
       movies: null,
-      selectedMovie: null,
       user: null
     };
     return _this;
@@ -33323,30 +33737,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var _this3 = this;
+      var accessToken = localStorage.getItem('token');
 
-      _axios.default.get('https://mahmovies.herokuapp.com/movies').then(function (response) {
-        // Assign the result to the state
-        _this3.setState({
-          movies: response.data
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem('user')
         });
-      }).catch(function (error) {
-        console.log(error);
-      });
-    }
-  }, {
-    key: "onMovieClick",
-    value: function onMovieClick(movie) {
-      this.setState({
-        selectedMovie: movie
-      });
-    }
-  }, {
-    key: "backToMovies",
-    value: function backToMovies() {
-      this.setState({
-        selectedMovie: null
-      });
+        this.getMovies(accessToken);
+      }
     }
   }, {
     key: "onLoggedIn",
@@ -33362,41 +33760,47 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this3 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
-          selectedMovie = _this$state.selectedMovie,
           user = _this$state.user;
-      if (!user) return [_react.default.createElement(_registrationView.RegistrationView, {
+      if (!user) return;
+
+      _react.default.createElement(_loginView.LoginView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
+          return _this3.onLoggedIn(user);
         }
-      }), _react.default.createElement(_loginView.LoginView, {
-        onLoggedIn: function onLoggedIn(user) {
-          return _this4.onLoggedIn(user);
-        }
-      })]; // Before the movies have been loaded
+      }); // Before the movies have been loaded
+
 
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
       });
-      return _react.default.createElement("div", {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
         className: "main-view"
-      }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie,
-        backToMovies: function backToMovies() {
-          return _this4.backToMovies();
+      }, _react.default.createElement(_reactRouterDom.Route, {
+        exact: true,
+        path: "/",
+        render: function render() {
+          return movies.map(function (m) {
+            return _react.default.createElement(_movieCard.MovieCard, {
+              key: m._id,
+              movie: m
+            });
+          });
         }
-      }) : movies.map(function (movie) {
-        return _react.default.createElement(_movieCard.MovieCard, {
-          key: movie._id,
-          movie: movie,
-          onClick: function onClick(movie) {
-            return _this4.onMovieClick(movie);
-          }
-        });
-      }));
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/movies/:movieId",
+        render: function render(_ref) {
+          var match = _ref.match;
+          return _react.default.createElement(_movieView.MovieView, {
+            movie: movies.find(function (m) {
+              return m._id === match.params.movieId;
+            })
+          });
+        }
+      })));
     }
   }]);
 
@@ -33404,7 +33808,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.MainView = MainView;
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx"}],"index.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../../node_modules/react-router-dom/esm/react-router-dom.js","../registration-view/registration-view":"components/registration-view/registration-view.jsx","../login-view/login-view":"components/login-view/login-view.jsx","../movie-card/movie-card":"components/movie-card/movie-card.jsx","../movie-view/movie-view":"components/movie-view/movie-view.jsx"}],"index.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -33498,7 +33902,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50437" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51576" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

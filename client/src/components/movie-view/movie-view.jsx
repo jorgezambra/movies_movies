@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { Link } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 
@@ -11,7 +14,7 @@ export class MovieView extends React.Component {
   }
 
   render() {
-    const { movie, backToMovies } = this.props;
+    const { movie } = this.props;
 
     if (!movie) return null;
 
@@ -41,7 +44,9 @@ export class MovieView extends React.Component {
             <span className="value">{movie.Director.Name}</span>
           </div>
           <br></br>
-          <Button variant="dark" onClick={backToMovies}>Back</Button>
+          <Link to={`/`}>
+            <Button variant="dark" onClick={backToMovies}>BACK</Button>
+          </Link>
         </div>
       </Container>
     );

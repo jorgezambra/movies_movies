@@ -6,10 +6,12 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import { Link } from 'react-router-dom';
+
 export class MovieCard extends React.Component {
   render() {
 
-    const { movie, onClick } = this.props;
+    const { movie } = this.props;
 
     return (
       <Container>
@@ -25,7 +27,9 @@ export class MovieCard extends React.Component {
                 <Card.Text>{movie.Description}</Card.Text>
               </Col>
               <br></br>
-              <Button onClick={() => onClick(movie)} variant="danger">MORE</Button>
+              <Link to={`/movies/${movie._id}`}>
+                <Button variant="danger">MORE</Button>
+              </Link>
             </Card.Body>
           </Card>
         </Row>
@@ -34,7 +38,7 @@ export class MovieCard extends React.Component {
   }
 }
 
-MovieCard.propTypes = {
+/*MovieCard.propTypes = {
   movie: PropTypes.shape({
     Title: PropTypes.string.isRequired,
     Description: PropTypes.string.isRequired,
@@ -42,3 +46,4 @@ MovieCard.propTypes = {
   }).isRequired,
   onClick: PropTypes.func.isRequired
 };
+*/

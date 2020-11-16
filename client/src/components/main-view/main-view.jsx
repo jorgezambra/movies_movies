@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import { RegistrationView } from '../registration-view/registration-view';
 import { LoginView } from '../login-view/login-view';
 import { MovieCard } from '../movie-card/movie-card';
@@ -15,7 +17,6 @@ export class MainView extends React.Component {
 
     this.state = {
       movies: null,
-      selectedMovie: null,
       user: null
     };
   }
@@ -36,28 +37,13 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://mahmovies.herokuapp.com/movies')
-      .then(response => {
-        // Assign the result to the state
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
-  }
-
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
-  }
-
-  backToMovies() {
-    this.setState({
-      selectedMovie: null
-    });
+      this.getMovies(accessToken);
+    }
   }
 
   onLoggedIn(authData) {
@@ -72,25 +58,20 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, user } = this.state;
 
-    if (!user) return [
-      <RegistrationView onLoggedIn={(user) => this.onLoggedIn(user)} />,
-      <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />
-    ];
+    if (!user) return
+    <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
     // Before the movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
-      <div className="main-view">
-        {selectedMovie
-          ? <MovieView movie={selectedMovie} backToMovies={() =>
-            this.backToMovies()} />
-          : movies.map(movie => (
-            <MovieCard key={movie._id} movie={movie} onClick={movie => this.onMovieClick(movie)} />
-          ))
-        }
-      </div>
+      <Router>
+        <div className="main-view">
+          <Route exact path="/" render={() => movies.map(m => <MovieCard key={m._id} movie={m} />)} />
+          <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+        </div>
+      </Router>
     );
   }
 }
