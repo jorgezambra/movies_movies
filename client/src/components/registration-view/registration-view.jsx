@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -14,10 +15,24 @@ export function RegistrationView(props) {
   const [email, createEmail] = useState('');
   const [birthday, createBirthday] = useState('');
 
-  const handleRegister = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(username, password, email, birthday);
 
+    axios.post('https://mahmovies.herokuapp.com/users', {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+      .then(response => {
+        const data = response.data;
+        console.log(data);
+        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+      })
+      .catch(e => {
+        console.log('error registering the user')
+      });
   };
 
 
@@ -63,7 +78,7 @@ export function RegistrationView(props) {
               <Form.Label className='Label'>Date of Birth</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Enter DOB (MM/DD/YYYY)"
+                placeholder="(MM/DD/YYYY)"
                 value={birthday}
                 onChange={(e) => createBirthday(e.target.value)}
               />
@@ -71,7 +86,7 @@ export function RegistrationView(props) {
           </Row>
           <Col>
             <br></br>
-            <Button variant="dark" type="submit" onClick={handleRegister}>
+            <Button variant="dark" type="submit" onClick={handleSubmit}>
               Register
             </Button>
           </Col>

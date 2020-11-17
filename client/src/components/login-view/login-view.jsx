@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import { Link } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -18,10 +20,11 @@ export function LoginView(props) {
     e.preventDefault();
     console.log(username, password);
     /* Send a request to the server for authentication */
-    axios.post('https://mahmovies.herokuapp.com/login', {
-      Username: username,
-      Password: password
-    })
+    axios
+      .post('https://mahmovies.herokuapp.com/login', {
+        Username: username,
+        Password: password
+      })
       .then(response => {
         const data = response.data;
         props.onLoggedIn(data);
@@ -60,16 +63,21 @@ export function LoginView(props) {
                 type='password'
                 placeholder='Enter Password'
               />
+              <br></br>
+              <Button type='button' variant='dark' onClick={handleSubmit}>
+                Login
+            </Button>
             </Col>
           </Row>
-          <Col className='Button'>
-            <br></br>
-            <Button type='button' variant='dark' onClick={handleSubmit}>
-              Login
-              </Button>
-          </Col>
+          <br></br>
+          <br></br>
+          <Row>
+            <Link to={`/register`}>
+              <Button variant='link'>Not Registered?</Button>
+            </Link>
+          </Row>
         </Form.Group>
       </Form>
-    </Container>
+    </Container >
   );
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
@@ -16,7 +15,7 @@ export class MovieCard extends React.Component {
     return (
       <Container>
         <Row>
-          <Card style={{ width: '30%' }}>
+          <Card style={{ width: '20rem' }}>
             <Card.Body>
               <Col>
                 <Card.Img variant="top" src={movie.ImagePath} />
@@ -28,7 +27,7 @@ export class MovieCard extends React.Component {
               </Col>
               <br></br>
               <Link to={`/movies/${movie._id}`}>
-                <Button variant="danger">MORE</Button>
+                <Button variant="danger">More</Button>
               </Link>
             </Card.Body>
           </Card>
