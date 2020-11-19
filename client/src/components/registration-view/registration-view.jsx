@@ -1,97 +1,106 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Container from 'react-bootstrap/Container';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
+
+import { Link } from 'react-router-dom';
+
+import { Form, Container, Button, Col, Row } from 'react-bootstrap';
 
 import './registration-view.scss';
 
-
-export function RegistrationView(props) {
-  const [username, createUsername] = useState('');
-  const [password, createPassword] = useState('');
-  const [email, createEmail] = useState('');
-  const [birthday, createBirthday] = useState('');
+export function RegistrationView() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
+  const [birthday, setBirthday] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password, email, birthday);
 
-    axios.post('https://mahmovies.herokuapp.com/users', {
+    const createdUser = {
       Username: username,
       Password: password,
       Email: email,
-      Birthday: birthday
-    })
-      .then(response => {
-        const data = response.data;
-        console.log(data);
-        window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
+      Birthday: birthday,
+    };
+
+    axios
+      .post('https://mahmovies.herokuapp.com/users', createdUser)
+      .then((response) => {
+        console.log(response);
+        console.log(response.data);
+        alert('User created successfully');
+        window.open('/', '_self');
       })
-      .catch(e => {
-        console.log('error registering the user')
+      .catch((e) => {
+        console.log(e.response);
+        alert('Error processing request');
       });
   };
 
-
   return (
     <Container>
-      <Form>
-        <br></br>
-        <h2>Register New User</h2>
-        <br></br>
-        <Form.Group className='register'>
+      <br></br>
+      <Form style={{ width: '20rem' }}>
+        <Form.Group align='center' controlId='formBasicUsername'>
+          <Form.Label><h5>Username</h5></Form.Label>
+          <Form.Control
+            type='text'
+            placeholder='Username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <Form.Text align='left' className='text-muted'>
+            *min. 5 characters
+          </Form.Text>
+        </Form.Group>
+
+        <Form.Group align='center' controlId='formBasicPassword'>
+          <Form.Label><h5>Password</h5></Form.Label>
+          <Form.Control
+            type='password'
+            placeholder='Password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group align='center' controlId='formBasicEmail'>
+          <Form.Label><h5>Email address</h5></Form.Label>
+          <Form.Control
+            type='email'
+            value={email}
+            placeholder='Enter email'
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group align='center' controlId='formBasicDate'>
+          <Form.Label><h5>Date of Birth</h5></Form.Label>
+          <Form.Control
+            type='date'
+            value={birthday}
+            placeholder='12/31/1986'
+            onChange={(e) => setBirthday(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group align='center'>
           <Row>
-            <Col xs='auto'>
-              <Form.Label className='Label'>Username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter username"
-                value={username}
-                onChange={(e) => createUsername(e.target.value)}
-              />
+            <Col>
+              <Button variant='dark' type='submit' onClick={handleSubmit}>
+                Submit
+        </Button>
             </Col>
-            <Col xs='auto'>
-              <Form.Label className='Label'>Password</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Password"
-                value={password}
-                onChange={(e) => createPassword(e.target.value)}
-              />
+            <Col>
+              <Link to={`/`}>
+                <Button variant='dark link' type='submit'>
+                  Cancel
+          </Button>
+              </Link>
             </Col>
           </Row>
-          <br></br>
-          <Row>
-            <Col xs='auto'>
-              <Form.Label className='Label'>Email</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter Email"
-                value={email}
-                onChange={(e) => createEmail(e.target.value)}
-              />
-            </Col>
-            <Col xs='auto'>
-              <Form.Label className='Label'>Date of Birth</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="(MM/DD/YYYY)"
-                value={birthday}
-                onChange={(e) => createBirthday(e.target.value)}
-              />
-            </Col>
-          </Row>
-          <Col>
-            <br></br>
-            <Button variant="dark" type="submit" onClick={handleSubmit}>
-              Register
-            </Button>
-          </Col>
         </Form.Group>
       </Form>
-    </Container>
+    </Container >
   );
 }

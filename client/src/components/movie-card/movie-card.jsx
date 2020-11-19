@@ -14,20 +14,18 @@ export class MovieCard extends React.Component {
 
     return (
       <Container>
+        <br></br>
         <Row>
           <Card style={{ width: '20rem' }}>
             <Card.Body>
-              <Col>
-                <Card.Img variant="top" src={movie.ImagePath} />
-              </Col>
+              <Card.Img variant="top" src={movie.ImagePath} />
+              <br></br>
               <br></br>
               <Card.Title>{movie.Title}</Card.Title>
-              <Col>
-                <Card.Text>{movie.Description}</Card.Text>
-              </Col>
+              <Card.Text>{movie.Description}</Card.Text>
               <br></br>
               <Link to={`/movies/${movie._id}`}>
-                <Button variant="danger">More</Button>
+                <Button variant="danger">+Info</Button>
               </Link>
             </Card.Body>
           </Card>
