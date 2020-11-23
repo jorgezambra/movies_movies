@@ -1,11 +1,29 @@
 const express = require('express');
-const request = require('request');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const passport = require('passport');
 require('./passport');
 
 const cors = require('cors');
+app.use(cors());
+let allowedOrigins = ["http://localhost:1234", "https://mahmovies.herokuapp.com", "*"];
+//CORS
+//implementation
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        let message =
+          "The CORS policy for this application doesn't allow access from origin " +
+          origin;
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
+
 const morgan = require('morgan');
 const app = express();
 const mongoose = require('mongoose');
@@ -20,11 +38,6 @@ const Users = Models.User;
 //mongoose.connect('mongodb://localhost:27017/MahMovies', { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
 
 app.use(bodyParser.json());
 let auth = require('./auth')(app);
