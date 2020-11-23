@@ -25,7 +25,6 @@ import { ProfileView } from '../profile-view/profile-view';
 import { UpdateProfile } from '../update-profile/update-profile';
 
 class MainView extends React.Component {
-
   constructor() {
     super();
 
@@ -48,7 +47,7 @@ class MainView extends React.Component {
     axios.get('https://mahmovies.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` }
     })
-      .then(response => {
+      .then((response) => {
         // Assign the result to the state
         this.props.setMovies(response.data);
       })
@@ -84,9 +83,10 @@ class MainView extends React.Component {
     let { movies } = this.props;
     let { user } = this.state;
 
+    if (!movies) return <div className="main-view" />;
 
     return (
-      <Router>
+      <Router basename='/client'>
         <Navbar bg="dark" variant='dark' expand="md">
           <Navbar.Brand>Mah Movies</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -102,8 +102,8 @@ class MainView extends React.Component {
         </Navbar>
         <div className="main-view">
           <Route exact path="/" render={() => {
-            if (!user) return
-            <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+            if (!user) return (
+              <LoginView onLoggedIn={user => this.onLoggedIn(user)} />);
             return <MoviesList movies={movies} />;
           }} />
           <Route path="/register" render={() => <RegistrationView />} />

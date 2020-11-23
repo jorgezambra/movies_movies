@@ -24,12 +24,12 @@ export function LoginView(props) {
         Username: username,
         Password: password
       })
-      .then((response) => {
+      .then(response => {
         const data = response.data;
         props.onLoggedIn(data);
       })
-      .catch((e) => {
-        console.log('no such user')
+      .catch(e => {
+        console.log('no such user');
       });
   };
 
