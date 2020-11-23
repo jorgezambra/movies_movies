@@ -18,24 +18,23 @@ export function LoginView(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(username, password);
-    /* Send a request to the server for authentication */
+
     axios
       .post('https://mahmovies.herokuapp.com/login', {
         Username: username,
         Password: password
       })
-      .then(response => {
+      .then((response) => {
         const data = response.data;
         props.onLoggedIn(data);
       })
-      .catch(e => {
+      .catch((e) => {
         console.log('no such user')
       });
   };
 
   return (
-    <Container>
+    <Container className='login-container'>
       <Form>
         <br></br>
         <h2>Registered Users</h2>
