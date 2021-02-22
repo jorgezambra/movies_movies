@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 import { Link } from 'react-router-dom';
-
 import { Form, Container, Button, Col, Row } from 'react-bootstrap';
-
 import './registration-view.scss';
 
+/**
+* Login view
+* @function LoginView
+* @param {func} props - onLoggedIn props
+* @returns {LoginView}
+*/
 export function RegistrationView() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');

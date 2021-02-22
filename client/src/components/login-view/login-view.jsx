@@ -1,21 +1,29 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
 import { Link } from 'react-router-dom';
-
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
-
 import './login-view.scss';
 
-
+/**
+* Login view
+* @function LoginView
+* @param {func} props - onLoggedIn props
+* @returns {LoginView}
+*/
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  /**
+   * username/password input request sent to /login post endpoint 
+   * @function handleSubmit
+   * @param {event}
+   * @return {object} User information
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
 

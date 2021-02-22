@@ -1,16 +1,19 @@
 import React from 'react';
 import axios from 'axios';
-
 import { Link } from 'react-router-dom';
-
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-
 import './profile-view.scss';
 
+/**
+* Profile information view with edit option
+* @function ProfileView
+* @param {func} props - username, email, birthday, onProfileUpdate props
+* @returns {ProfileView}
+*/
 export class ProfileView extends React.Component {
   constructor(props) {
     super(props);

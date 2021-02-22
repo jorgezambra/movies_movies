@@ -3,9 +3,14 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-
 import { Link } from 'react-router-dom';
 
+/**
+* Director information view
+* @function DirectorView
+* @param {string} props - directorName props
+* @returns {DirectorView}
+*/
 export class DirectorView extends React.Component {
   constructor() {
     super();
