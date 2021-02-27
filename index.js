@@ -1,5 +1,4 @@
 const express = require('express');
-const request = require('request');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const passport = require('passport');
@@ -20,11 +19,6 @@ const Users = Models.User;
 //mongoose.connect('mongodb://localhost:27017/MahMovies', { useNewUrlParser: true, useUnifiedTopology: true });
 
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
 
 app.use(bodyParser.json());
 let auth = require('./auth')(app);
