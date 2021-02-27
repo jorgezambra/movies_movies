@@ -1,14 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+
 import { connect } from 'react-redux';
+
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import { setMovies, setUser } from '../../actions/actions';
+
 import { Link } from 'react-router-dom';
+
 import {
   Button,
   Navbar,
   Nav
 } from 'react-bootstrap';
+
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from '../login-view/login-view';
 import { RegistrationView } from '../registration-view/registration-view';
@@ -18,12 +24,6 @@ import { GenreView } from '../genre-view/genre-view';
 import { ProfileView } from '../profile-view/profile-view';
 import { UpdateProfile } from '../update-profile/update-profile';
 
-/**
-* MyFlix main page for navigations and routing
-* @class MainView
-* @param {object} props - movies, userData and visibilityFilter props
-* @returns {MainView}
-*/
 class MainView extends React.Component {
   constructor() {
     super();
@@ -43,13 +43,6 @@ class MainView extends React.Component {
     }
   }
 
-  /**
-  * a get request with authorization to endpoint /movies to get movie list once logged in submits
-  * @async
-  * @function getMovies
-  * @param {string} token
-  * @returns {array} movies
-  */
   getMovies(token) {
     axios.get('https://mahmovies.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` }
@@ -63,11 +56,6 @@ class MainView extends React.Component {
       });
   }
 
-  /**
-  * user and movies data set to local storage on login
-  * @function onLoggedIn
-  * @param {object} authData
-  */
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
@@ -79,10 +67,6 @@ class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  /**
-  * user logout data set functionality
-  * @function onLoggedOut
-  */
   onLoggedOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

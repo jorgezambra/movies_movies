@@ -8,12 +8,6 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
-/**
-* Movie list view to show all movies cards
-* @function MoviesList
-* @param {object} props - moviesToShow, favouriteMovies, visibilityFilter, removeFromFavourites, addToFavourites props
-* @returns {MoviesList}
-*/
 const mapStateToProps = (state) => {
   const { visibilityFilter } = state;
   return { visibilityFilter };
