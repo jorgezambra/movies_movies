@@ -2,12 +2,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const passport = require('passport');
-const app = express();
 require('./passport');
 
 const cors = require('cors');
 app.use(cors());
-let allowedOrigins = ["http://localhost:1234", "https://movie-collection-myflix.herokuapp.com/", "*"];
+let allowedOrigins = ["http://localhost:1234", "https://mahmovies.herokuapp.com", "*"];
 //CORS
 //implementation
 app.use(
@@ -26,6 +25,7 @@ app.use(
 );
 
 const morgan = require('morgan');
+const app = express();
 const mongoose = require('mongoose');
 const Models = require('./models.js');
 
@@ -45,6 +45,8 @@ let auth = require('./auth')(app);
 app.use(morgan('common'));
 
 app.use(express.static('public'));
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   res.send('This is Mah Movies');
