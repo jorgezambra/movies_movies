@@ -53165,12 +53165,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       var movies = this.props.movies;
       var user = this.state.user;
-      if (!movies) return _react.default.createElement("div", {
-        className: "main-view"
-      });
-      return _react.default.createElement(_reactRouterDom.BrowserRouter, {
-        basename: "/client"
-      }, _react.default.createElement(_reactBootstrap.Navbar, {
+      return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactBootstrap.Navbar, {
         bg: "dark",
         variant: "dark",
         expand: "md"
@@ -53198,11 +53193,14 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         exact: true,
         path: "/",
         render: function render() {
-          if (!user) return _react.default.createElement(_loginView.LoginView, {
+          if (!user) return;
+
+          _react.default.createElement(_loginView.LoginView, {
             onLoggedIn: function onLoggedIn(user) {
               return _this3.onLoggedIn(user);
             }
           });
+
           return _react.default.createElement(_moviesList.default, {
             movies: movies
           });
@@ -53441,7 +53439,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55091" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53042" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
